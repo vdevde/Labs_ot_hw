@@ -1,0 +1,426 @@
+# terraform apply
+yandex_vpc_network.network-1: Refreshing state... [id=xxx]
+yandex_compute_disk.boot-disk-1: Refreshing state... [id=xxx]
+yandex_vpc_subnet.subnet-1: Refreshing state... [id=xxx]
+
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the
+last "terraform apply" which may have affected this plan:
+
+  # yandex_compute_disk.boot-disk-1 has been deleted
+  - resource "yandex_compute_disk" "boot-disk-1" {
+      - id          = "fhmp524fon9sr3ntannc" -> null
+        name        = "boot-disk-1"
+        # (12 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+
+Unless you have made equivalent changes to your configuration, or ignored the
+relevant attributes using ignore_changes, the following plan may include
+actions to undo or respond to these changes.
+
+───────────────────────────────────────────────────────────────────────────────
+
+Terraform used the selected providers to generate the following execution plan.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # yandex_compute_disk.boot-disk-1 will be created
+  + resource "yandex_compute_disk" "boot-disk-1" {
+      + block_size  = 4096
+      + created_at  = (known after apply)
+      + folder_id   = (known after apply)
+      + id          = (known after apply)
+      + image_id    = "fd874d4jo8jbroqs6d7i"
+      + name        = "boot-disk-1"
+      + product_ids = (known after apply)
+      + size        = 20
+      + status      = (known after apply)
+      + type        = "network-hdd"
+      + zone        = "ru-central1-a"
+
+      + disk_placement_policy (known after apply)
+    }
+
+  # yandex_compute_instance.vm-1 will be created
+  + resource "yandex_compute_instance" "vm-1" {
+      + created_at                = (known after apply)
+      + folder_id                 = (known after apply)
+      + fqdn                      = (known after apply)
+      + gpu_cluster_id            = (known after apply)
+      + hostname                  = (known after apply)
+      + id                        = (known after apply)
+      + maintenance_grace_period  = (known after apply)
+      + maintenance_policy        = (known after apply)
+      + metadata                  = {
+          + "ssh-keys" = <<-EOT
+                ubuntu:ssh-ed25519 xxx
+            EOT
+        }
+      + name                      = "terraform1"
+      + network_acceleration_type = "standard"
+      + platform_id               = "standard-v1"
+      + service_account_id        = (known after apply)
+      + status                    = (known after apply)
+      + zone                      = (known after apply)
+
+      + boot_disk {
+          + auto_delete = true
+          + device_name = (known after apply)
+          + disk_id     = (known after apply)
+          + mode        = (known after apply)
+
+          + initialize_params (known after apply)
+        }
+
+      + metadata_options (known after apply)
+
+      + network_interface {
+          + index              = (known after apply)
+          + ip_address         = (known after apply)
+          + ipv4               = true
+          + ipv6               = (known after apply)
+          + ipv6_address       = (known after apply)
+          + mac_address        = (known after apply)
+          + nat                = true
+          + nat_ip_address     = (known after apply)
+          + nat_ip_version     = (known after apply)
+          + security_group_ids = (known after apply)
+          + subnet_id          = "e9bkdlrbfvtg2dn0rdal"
+        }
+
+      + placement_policy (known after apply)
+
+      + resources {
+          + core_fraction = 100
+          + cores         = 2
+          + memory        = 2
+        }
+
+      + scheduling_policy (known after apply)
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + external_ip_address_vm_1 = (known after apply)
+  + internal_ip_address_vm_1 = (known after apply)
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+yandex_compute_disk.boot-disk-1: Creating...
+yandex_compute_disk.boot-disk-1: Creation complete after 10s [id=fhmdu5rkc0dvr21giu4n]
+yandex_compute_instance.vm-1: Creating...
+yandex_compute_instance.vm-1: Still creating... [10s elapsed]
+yandex_compute_instance.vm-1: Still creating... [20s elapsed]
+yandex_compute_instance.vm-1: Still creating... [30s elapsed]
+yandex_compute_instance.vm-1: Provisioning with 'remote-exec'...
+yandex_compute_instance.vm-1 (remote-exec): Connecting to remote host via SSH...
+yandex_compute_instance.vm-1 (remote-exec):   Host: 84.201.130.219
+yandex_compute_instance.vm-1 (remote-exec):   User: ubuntu
+yandex_compute_instance.vm-1 (remote-exec):   Password: false
+yandex_compute_instance.vm-1 (remote-exec):   Private key: true
+yandex_compute_instance.vm-1 (remote-exec):   Certificate: false
+yandex_compute_instance.vm-1 (remote-exec):   SSH Agent: false
+yandex_compute_instance.vm-1 (remote-exec):   Checking Host Key: false
+yandex_compute_instance.vm-1 (remote-exec):   Target Platform: unix
+yandex_compute_instance.vm-1: Still creating... [40s elapsed]
+yandex_compute_instance.vm-1: Still creating... [50s elapsed]
+yandex_compute_instance.vm-1 (remote-exec): Connecting to remote host via SSH...
+yandex_compute_instance.vm-1 (remote-exec):   Host: 84.201.130.219
+yandex_compute_instance.vm-1 (remote-exec):   User: ubuntu
+yandex_compute_instance.vm-1 (remote-exec):   Password: false
+yandex_compute_instance.vm-1 (remote-exec):   Private key: true
+yandex_compute_instance.vm-1 (remote-exec):   Certificate: false
+yandex_compute_instance.vm-1 (remote-exec):   SSH Agent: false
+yandex_compute_instance.vm-1 (remote-exec):   Checking Host Key: false
+yandex_compute_instance.vm-1 (remote-exec):   Target Platform: unix
+yandex_compute_instance.vm-1: Still creating... [1m0s elapsed]
+yandex_compute_instance.vm-1 (remote-exec): Connecting to remote host via SSH...
+yandex_compute_instance.vm-1 (remote-exec):   Host: 84.201.130.219
+yandex_compute_instance.vm-1 (remote-exec):   User: ubuntu
+yandex_compute_instance.vm-1 (remote-exec):   Password: false
+yandex_compute_instance.vm-1 (remote-exec):   Private key: true
+yandex_compute_instance.vm-1 (remote-exec):   Certificate: false
+yandex_compute_instance.vm-1 (remote-exec):   SSH Agent: false
+yandex_compute_instance.vm-1 (remote-exec):   Checking Host Key: false
+yandex_compute_instance.vm-1 (remote-exec):   Target Platform: unix
+yandex_compute_instance.vm-1 (remote-exec): Connecting to remote host via SSH...
+yandex_compute_instance.vm-1 (remote-exec):   Host: 84.201.130.219
+yandex_compute_instance.vm-1 (remote-exec):   User: ubuntu
+yandex_compute_instance.vm-1 (remote-exec):   Password: false
+yandex_compute_instance.vm-1 (remote-exec):   Private key: true
+yandex_compute_instance.vm-1 (remote-exec):   Certificate: false
+yandex_compute_instance.vm-1 (remote-exec):   SSH Agent: false
+yandex_compute_instance.vm-1 (remote-exec):   Checking Host Key: false
+yandex_compute_instance.vm-1 (remote-exec):   Target Platform: unix
+yandex_compute_instance.vm-1: Still creating... [1m10s elapsed]
+yandex_compute_instance.vm-1 (remote-exec): Connecting to remote host via SSH...
+yandex_compute_instance.vm-1 (remote-exec):   Host: 84.201.130.219
+yandex_compute_instance.vm-1 (remote-exec):   User: ubuntu
+yandex_compute_instance.vm-1 (remote-exec):   Password: false
+yandex_compute_instance.vm-1 (remote-exec):   Private key: true
+yandex_compute_instance.vm-1 (remote-exec):   Certificate: false
+yandex_compute_instance.vm-1 (remote-exec):   SSH Agent: false
+yandex_compute_instance.vm-1 (remote-exec):   Checking Host Key: false
+yandex_compute_instance.vm-1 (remote-exec):   Target Platform: unix
+yandex_compute_instance.vm-1 (remote-exec): Connected!
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 0% [Working]
+yandex_compute_instance.vm-1 (remote-exec): Hit:1 http://mirror.yandex.ru/ubuntu jammy InRelease
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 0% [Connecting to security.ubuntu.com (
+yandex_compute_instance.vm-1 (remote-exec): Get:2 http://mirror.yandex.ru/ubuntu jammy-updates InRelease [128 kB]
+yandex_compute_instance.vm-1 (remote-exec): Get:3 http://mirror.yandex.ru/ubuntu jammy-backports InRelease [127 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 0% [Waiting for headers]
+yandex_compute_instance.vm-1 (remote-exec): Get:4 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 0% [4 InRelease 14.2 kB/129 kB 11%]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 0% [Working]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 0% [Working]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 0% [Working]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 0% [Waiting for headers]
+yandex_compute_instance.vm-1 (remote-exec): Get:5 http://mirror.yandex.ru/ubuntu jammy-updates/main amd64 Packages [2,067 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 0% [5 Packages 218 kB/2,067 kB 11%]
+yandex_compute_instance.vm-1 (remote-exec): 0% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 31% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 31% [5 Packages store 0 B] [Waiting for
+yandex_compute_instance.vm-1 (remote-exec): Get:6 http://mirror.yandex.ru/ubuntu jammy-updates/main Translation-en [358 kB]
+yandex_compute_instance.vm-1 (remote-exec): Get:7 http://mirror.yandex.ru/ubuntu jammy-updates/main amd64 c-n-f Metadata [17.9 kB]
+yandex_compute_instance.vm-1 (remote-exec): Get:8 http://mirror.yandex.ru/ubuntu jammy-updates/restricted amd64 Packages [2,504 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 35% [5 Packages store 0 B] [8 Packages
+yandex_compute_instance.vm-1 (remote-exec): 48% [5 Packages store 0 B] [Waiting for
+yandex_compute_instance.vm-1 (remote-exec): Get:9 http://mirror.yandex.ru/ubuntu jammy-updates/restricted Translation-en [432 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 48% [5 Packages store 0 B] [9 Translati
+yandex_compute_instance.vm-1 (remote-exec): Get:10 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [1,848 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 50% [5 Packages store 0 B] [9 Translati
+yandex_compute_instance.vm-1 (remote-exec): 50% [5 Packages store 0 B] [10 Packages
+yandex_compute_instance.vm-1 (remote-exec): Get:11 http://mirror.yandex.ru/ubuntu jammy-updates/universe amd64 Packages [1,130 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 50% [5 Packages store 0 B] [11 Packages
+yandex_compute_instance.vm-1 (remote-exec): 58% [5 Packages store 0 B] [10 Packages
+yandex_compute_instance.vm-1 (remote-exec): Get:12 http://mirror.yandex.ru/ubuntu jammy-updates/universe Translation-en [264 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 58% [5 Packages store 0 B] [12 Translat
+yandex_compute_instance.vm-1 (remote-exec): 59% [5 Packages store 0 B] [10 Packages
+yandex_compute_instance.vm-1 (remote-exec): Get:13 http://mirror.yandex.ru/ubuntu jammy-updates/universe amd64 c-n-f Metadata [26.3 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 59% [5 Packages store 0 B] [13 Commands
+yandex_compute_instance.vm-1 (remote-exec): 59% [5 Packages store 0 B] [10 Packages
+yandex_compute_instance.vm-1 (remote-exec): Get:14 http://mirror.yandex.ru/ubuntu jammy-backports/main amd64 Packages [67.7 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 59% [5 Packages store 0 B] [14 Packages
+yandex_compute_instance.vm-1 (remote-exec): 60% [5 Packages store 0 B] [10 Packages
+yandex_compute_instance.vm-1 (remote-exec): Get:15 http://mirror.yandex.ru/ubuntu jammy-backports/main amd64 c-n-f Metadata [388 B]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 60% [5 Packages store 0 B] [15 Commands
+yandex_compute_instance.vm-1 (remote-exec): 60% [5 Packages store 0 B] [10 Packages
+yandex_compute_instance.vm-1 (remote-exec): Get:16 http://mirror.yandex.ru/ubuntu jammy-backports/universe amd64 Packages [28.8 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 60% [5 Packages store 0 B] [16 Packages
+yandex_compute_instance.vm-1 (remote-exec): 60% [5 Packages store 0 B] [10 Packages
+yandex_compute_instance.vm-1 (remote-exec): Get:17 http://mirror.yandex.ru/ubuntu jammy-backports/universe amd64 c-n-f Metadata [672 B]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 60% [5 Packages store 0 B] [17 Commands
+yandex_compute_instance.vm-1 (remote-exec): 60% [5 Packages store 0 B] [10 Packages
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 70% [5 Packages store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): Get:18 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [299 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 71% [5 Packages store 0 B] [18 Translat
+yandex_compute_instance.vm-1 (remote-exec): 72% [5 Packages store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): Get:19 http://security.ubuntu.com/ubuntu jammy-security/main amd64 c-n-f Metadata [13.3 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 72% [5 Packages store 0 B] [19 Commands
+yandex_compute_instance.vm-1 (remote-exec): 72% [5 Packages store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): Get:20 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [2,444 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 72% [5 Packages store 0 B] [20 Packages
+yandex_compute_instance.vm-1 (remote-exec): 87% [5 Packages store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): Get:21 http://security.ubuntu.com/ubuntu jammy-security/restricted Translation-en [421 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 87% [5 Packages store 0 B] [21 Translat
+yandex_compute_instance.vm-1 (remote-exec): 87% [21 Translation-en 49.2 kB/421 kB 1
+yandex_compute_instance.vm-1 (remote-exec): 87% [6 Translation-en store 0 B] [21 Tr
+yandex_compute_instance.vm-1 (remote-exec): 90% [6 Translation-en store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): Get:22 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [909 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 90% [6 Translation-en store 0 B] [22 Pa
+yandex_compute_instance.vm-1 (remote-exec): 95% [6 Translation-en store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): Get:23 http://security.ubuntu.com/ubuntu jammy-security/universe Translation-en [179 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 95% [6 Translation-en store 0 B] [23 Tr
+yandex_compute_instance.vm-1 (remote-exec): 96% [6 Translation-en store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): Get:24 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 c-n-f Metadata [19.4 kB]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 96% [6 Translation-en store 0 B] [24 Co
+yandex_compute_instance.vm-1 (remote-exec): 96% [6 Translation-en store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): 96% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 96% [7 Commands-amd64 store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): 97% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 97% [8 Packages store 0 B]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 97% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 97% [9 Translation-en store 0 B]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 97% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 97% [11 Packages store 0 B]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 97% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 97% [12 Translation-en store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): 97% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 97% [13 Commands-amd64 store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): 98% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 98% [14 Packages store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): 98% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 98% [15 Commands-amd64 store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): 98% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 98% [16 Packages store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): 98% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 98% [17 Commands-amd64 store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): 98% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 98% [10 Packages store 0 B]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 99% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 99% [18 Translation-en store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): 99% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 99% [19 Commands-amd64 store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): 99% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 99% [20 Packages store 0 B]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 99% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 99% [21 Translation-en store 0 B]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 99% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 99% [22 Packages store 0 B]
+yandex_compute_instance.vm-1: Still creating... [1m20s elapsed]
+yandex_compute_instance.vm-1 (remote-exec):
+yandex_compute_instance.vm-1 (remote-exec): 100% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 100% [23 Translation-en store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): 100% [Working]
+yandex_compute_instance.vm-1 (remote-exec): 100% [24 Commands-amd64 store 0 B]
+yandex_compute_instance.vm-1 (remote-exec): 100% [Working]
+yandex_compute_instance.vm-1 (remote-exec): Fetched 13.4 MB in 3s (4,265 kB/s)
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 0%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 0%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 0%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 3%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 3%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 4%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 4%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 5%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 5%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 5%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 5%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 36%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 36%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 50%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 50%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 51%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 51%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 51%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 51%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 56%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 56%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 60%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 60%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 67%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 67%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 67%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 71%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 71%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 74%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 74%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 76%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 81%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 81%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 84%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 84%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 92%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 92%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 95%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 95%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 98%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 98%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 99%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 99%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 99%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 99%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 99%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... 99%
+yandex_compute_instance.vm-1 (remote-exec): Reading package lists... Done
+yandex_compute_instance.vm-1 (remote-exec): Building dependency tree... 0%
+yandex_compute_instance.vm-1 (remote-exec): Building dependency tree... 0%
+yandex_compute_instance.vm-1 (remote-exec): Building dependency tree... 0%
+yandex_compute_instance.vm-1 (remote-exec): Building dependency tree... 50%
+yandex_compute_instance.vm-1 (remote-exec): Building dependency tree... 50%
+yandex_compute_instance.vm-1 (remote-exec): Building dependency tree... Done
+yandex_compute_instance.vm-1 (remote-exec): Reading state information... 0%
+yandex_compute_instance.vm-1 (remote-exec): Reading state information... 0%
+yandex_compute_instance.vm-1 (remote-exec): Reading state information... Done
+yandex_compute_instance.vm-1 (remote-exec): 16 packages can be upgraded. Run 'apt list --upgradable' to see them.
+yandex_compute_instance.vm-1: Provisioning with 'local-exec'...
+yandex_compute_instance.vm-1 (local-exec): Executing: ["/bin/sh" "-c" "ansible-playbook -u ubuntu -i '84.201.130.219,'  --private-key ~/.ssh/id_ed25519 nginx.yml"]
+yandex_compute_instance.vm-1: Still creating... [1m30s elapsed]
+
+yandex_compute_instance.vm-1 (local-exec): PLAY [Configure Application Servers] *******************************************
+
+yandex_compute_instance.vm-1 (local-exec): TASK [Gathering Facts] *********************************************************
+The authenticity of host '84.201.130.219 (84.201.130.219)' can't be established.
+ECDSA key fingerprint is SHA256:xxx.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+yandex_compute_instance.vm-1 (local-exec): ok: [84.201.130.219]
+
+yandex_compute_instance.vm-1 (local-exec): TASK [Update apt cache] ********************************************************
+yandex_compute_instance.vm-1 (local-exec): changed: [84.201.130.219]
+
+yandex_compute_instance.vm-1 (local-exec): TASK [Install Nginx] ***********************************************************
+yandex_compute_instance.vm-1: Still creating... [1m40s elapsed]
+yandex_compute_instance.vm-1: Still creating... [1m50s elapsed]
+yandex_compute_instance.vm-1 (local-exec): changed: [84.201.130.219]
+
+yandex_compute_instance.vm-1 (local-exec): TASK [Start Nginx Service] *****************************************************
+yandex_compute_instance.vm-1 (local-exec): ok: [84.201.130.219]
+
+yandex_compute_instance.vm-1 (local-exec): PLAY RECAP *********************************************************************
+yandex_compute_instance.vm-1 (local-exec): 84.201.130.219             : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+yandex_compute_instance.vm-1: Creation complete after 1m54s [id=fhm04qj9an6510jpltlg]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+external_ip_address_vm_1 = "84.201.130.219"
+internal_ip_address_vm_1 = "192.168.10.18"
